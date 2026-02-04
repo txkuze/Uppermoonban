@@ -12,15 +12,15 @@ from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
 from youtube_search import YoutubeSearch
 
 from config import BANNED_USERS, SERVER_PLAYLIST_LIMIT
-from Oneforall import Carbon, app
-from Oneforall.utils.decorators.language import language, languageCB
-from Oneforall.utils.inline.playlist import (
+from Superban import Carbon, app
+from Superban.utils.decorators.language import language, languageCB
+from Superban.utils.inline.playlist import (
     botplaylist_markup,
     get_playlist_markup,
     warning_markup,
 )
-from Oneforall.utils.pastebin import HottyBin
-from Oneforall.utils.stream.stream import stream
+from Superban.utils.pastebin import SuperbanBin
+from Superban.utils.stream.stream import stream
 
 # Define a dictionary to track the last message timestamp for each user
 user_last_message_time = {}
