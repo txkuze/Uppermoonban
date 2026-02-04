@@ -8,7 +8,7 @@ from pytgcalls.exceptions import NoActiveGroupCall
 import config
 from config import BANNED_USERS, lyrical
 from Superban import Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app
-from Superban.core.call import Hotty
+from Superban.core.call import Superban
 from Superban.utils import seconds_to_min, time_to_seconds
 from Superban.utils.channelplay import get_channeplayCB
 from Superban.utils.decorators.language import languageCB
