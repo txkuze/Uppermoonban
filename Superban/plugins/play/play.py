@@ -7,22 +7,22 @@ from pytgcalls.exceptions import NoActiveGroupCall
 
 import config
 from config import BANNED_USERS, lyrical
-from Oneforall import Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app
-from Oneforall.core.call import Hotty
-from Oneforall.utils import seconds_to_min, time_to_seconds
-from Oneforall.utils.channelplay import get_channeplayCB
-from Oneforall.utils.decorators.language import languageCB
-from Oneforall.utils.decorators.play import PlayWrapper
-from Oneforall.utils.formatters import formats
-from Oneforall.utils.inline import (
+from Superban import Apple, Resso, SoundCloud, Spotify, Telegram, YouTube, app
+from Superban.core.call import Hotty
+from Superban.utils import seconds_to_min, time_to_seconds
+from Superban.utils.channelplay import get_channeplayCB
+from Superban.utils.decorators.language import languageCB
+from Superban.utils.decorators.play import PlayWrapper
+from Superban.utils.formatters import formats
+from Superban.utils.inline import (
     botplaylist_markup,
     livestream_markup,
     playlist_markup,
     slider_markup,
     track_markup,
 )
-from Oneforall.utils.logger import play_logs
-from Oneforall.utils.stream.stream import stream
+from Superban.utils.logger import play_logs
+from Superban.utils.stream.stream import stream
 
 
 @app.on_message(
