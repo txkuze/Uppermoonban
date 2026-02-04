@@ -13,10 +13,10 @@ from config import (
     confirmer,
     votemode,
 )
-from Oneforall import YouTube, app
-from Oneforall.core.call import Hotty
-from Oneforall.misc import SUDOERS, db
-from Oneforall.utils.database import (
+from Superban import YouTube, app
+from Superban.core.call import Superban
+from Superban.misc import SUDOERS, db
+from Superban.utils.database import (
     get_active_chats,
     get_lang,
     get_upvote_count,
@@ -27,17 +27,17 @@ from Oneforall.utils.database import (
     music_on,
     set_loop,
 )
-from Oneforall.utils.decorators.language import languageCB
-from Oneforall.utils.formatters import seconds_to_min
-from Oneforall.utils.inline import (
+from Superban.utils.decorators.language import languageCB
+from Superban.utils.formatters import seconds_to_min
+from Superban.utils.inline import (
     close_markup,
     stream_markup,
     stream_markup2,
     stream_markup_timer,
     stream_markup_timer2,
 )
-from Oneforall.utils.stream.autoclear import auto_clean
-from Oneforall.utils.thumbnails import get_thumb
+from Superban.utils.stream.autoclear import auto_clean
+from Superban.utils.thumbnails import get_thumb
 from strings import get_string
 
 checker = {}
@@ -165,7 +165,7 @@ async def del_back_playlist(client, CallbackQuery, _):
     elif command == "Skip" or command == "Replay":
         check = db.get(chat_id)
         if command == "Skip":
-            txt = f"➻ sᴛʀᴇᴀᴍ sᴋɪᴩᴩᴇᴅ 🎄\n│ \n└ʙʏ : {mention} 🥀"
+            txt = f"➻ sᴛʀᴇᴀᴍ sᴋɪᴩᴩᴇᴅ 🩷\n│ \n└ʙʏ : {mention} 🔱"
             popped = None
             try:
                 popped = check.pop(0)
@@ -173,7 +173,7 @@ async def del_back_playlist(client, CallbackQuery, _):
                     await auto_clean(popped)
                 if not check:
                     await CallbackQuery.edit_message_text(
-                        f"➻ sᴛʀᴇᴀᴍ sᴋɪᴩᴩᴇᴅ 🎄\n│ \n└ʙʏ : {mention} 🥀"
+                        f"➻ stream skipped 🩷\n│ \n└ʙʏ : {mention} 🔗"
                     )
                     await CallbackQuery.message.reply_text(
                         text=_["admin_6"].format(
@@ -182,7 +182,7 @@ async def del_back_playlist(client, CallbackQuery, _):
                         reply_markup=close_markup(_),
                     )
                     try:
-                        return await Hotty.stop_stream(chat_id)
+                        return await Superban.stop_stream(chat_id)
                     except:
                         return
             except:
@@ -196,7 +196,7 @@ async def del_back_playlist(client, CallbackQuery, _):
                         ),
                         reply_markup=close_markup(_),
                     )
-                    return await Hotty.stop_stream(chat_id)
+                    return await Superban.stop_stream(chat_id)
                 except:
                     return
         else:
@@ -446,3 +446,4 @@ async def markup_timer():
 
 
 asyncio.create_task(markup_timer())
+
