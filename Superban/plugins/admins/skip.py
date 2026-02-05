@@ -3,14 +3,14 @@ from pyrogram.types import InlineKeyboardMarkup, Message
 
 import config
 from config import BANNED_USERS
-from Oneforall import YouTube, app
-from Oneforall.core.call import Hotty
-from Oneforall.misc import db
-from Oneforall.utils.database import get_loop
-from Oneforall.utils.decorators import AdminRightsCheck
-from Oneforall.utils.inline import close_markup, stream_markup, stream_markup2
-from Oneforall.utils.stream.autoclear import auto_clean
-from Oneforall.utils.thumbnails import get_thumb
+from Superban import YouTube, app
+from Superban.core.call import Superban
+from Superban.misc import db
+from Superban.utils.database import get_loop
+from Superban.utils.decorators import AdminRightsCheck
+from Superban.utils.inline import close_markup, stream_markup, stream_markup2
+from Superban.utils.stream.autoclear import auto_clean
+from Superban.utils.thumbnails import get_thumb
 
 
 @app.on_message(
@@ -48,7 +48,7 @@ async def skip(cli, message: Message, _, chat_id):
                                         ),
                                         reply_markup=close_markup(_),
                                     )
-                                    await Hotty.stop_stream(chat_id)
+                                    await Superban.stop_stream(chat_id)
                                 except:
                                     return
                                 break
@@ -86,7 +86,7 @@ async def skip(cli, message: Message, _, chat_id):
                     ),
                     reply_markup=close_markup(_),
                 )
-                return await Hotty.stop_stream(chat_id)
+                return await Superban.stop_stream(chat_id)
             except:
                 return
     queued = check[0]["file"]
@@ -111,7 +111,7 @@ async def skip(cli, message: Message, _, chat_id):
         except:
             image = None
         try:
-            await Hotty.skip_stream(chat_id, link, video=status, image=image)
+            await Superban.skip_stream(chat_id, link, video=status, image=image)
         except:
             return await message.reply_text(_["call_6"])
         button = stream_markup2(_, chat_id)
@@ -144,7 +144,7 @@ async def skip(cli, message: Message, _, chat_id):
         except:
             image = None
         try:
-            await Hotty.skip_stream(chat_id, file_path, video=status, image=image)
+            await Superban.skip_stream(chat_id, file_path, video=status, image=image)
         except:
             return await mystic.edit_text(_["call_6"])
         button = stream_markup(_, videoid, chat_id)
@@ -164,7 +164,7 @@ async def skip(cli, message: Message, _, chat_id):
         await mystic.delete()
     elif "index_" in queued:
         try:
-            await Hotty.skip_stream(chat_id, videoid, video=status)
+            await Superban.skip_stream(chat_id, videoid, video=status)
         except:
             return await message.reply_text(_["call_6"])
         button = stream_markup2(_, chat_id)
@@ -186,7 +186,7 @@ async def skip(cli, message: Message, _, chat_id):
             except:
                 image = None
         try:
-            await Hotty.skip_stream(chat_id, queued, video=status, image=image)
+            await Superban.skip_stream(chat_id, queued, video=status, image=image)
         except:
             return await message.reply_text(_["call_6"])
         if videoid == "telegram":
